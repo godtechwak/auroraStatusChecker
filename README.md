@@ -1,7 +1,7 @@
 How to use
 ===============
 ```
-$ go mod init <모듈 초기화 디렉터리>
+$ go mod init aurora_status_check
 $ go mod tidy
 $ go build ./main.go
 $ ./main <api 호출 제한을 위한 sleep 밀리초>
