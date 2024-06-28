@@ -23,12 +23,24 @@ func (i Instance) Describe(svc *rds.RDS, name string) ([]string, error) {
 	instanceInfo := result.DBInstances[0]
 	instanceParam := result.DBInstances[0].DBParameterGroups[0]
 
-	return []string{
-		*instanceInfo.DBInstanceIdentifier,
-		*instanceInfo.EngineVersion,
-		*instanceInfo.DBInstanceStatus,
-		*instanceParam.ParameterApplyStatus,
-	}, nil
+	values := []*string{
+		instanceInfo.DBInstanceIdentifier,
+		instanceInfo.EngineVersion,
+		instanceInfo.DBInstanceStatus,
+		instanceParam.ParameterApplyStatus,
+		instanceInfo.PercentProgress,
+	}
+
+	var resultValues []string
+	for _, value := range values {
+		if value != nil {
+			resultValues = append(resultValues, *value)
+		} else {
+			resultValues = append(resultValues, "")
+		}
+	}
+
+	return resultValues, nil
 }
 
 func (i Instance) GetHeaders() []string {
