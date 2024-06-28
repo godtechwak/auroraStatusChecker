@@ -23,12 +23,24 @@ func (c Cluster) Describe(svc *rds.RDS, name string) ([]string, error) {
 	clusterInfo := result.DBClusters[0]
 	clusterParam := result.DBClusters[0].DBClusterMembers[0]
 
-	return []string{
-		*clusterInfo.DBClusterIdentifier,
-		*clusterInfo.EngineVersion,
-		*clusterInfo.Status,
-		*clusterParam.DBClusterParameterGroupStatus,
-	}, nil
+	values := []*string{
+		clusterInfo.DBClusterIdentifier,
+		clusterInfo.EngineVersion,
+		clusterInfo.Status,
+		clusterParam.DBClusterParameterGroupStatus,
+		clusterInfo.DBClusterInstanceClass,
+	}
+
+	var resultValues []string
+	for _, value := range values {
+		if value != nil {
+			resultValues = append(resultValues, *value)
+		} else {
+			resultValues = append(resultValues, "")
+		}
+	}
+
+	return resultValues, nil
 }
 
 func (c Cluster) GetHeaders() []string {
