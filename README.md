@@ -78,7 +78,7 @@ values := []*string{
 		instanceInfo.EngineVersion,
 		instanceInfo.DBInstanceStatus,
 		instanceParam.ParameterApplyStatus,
-		instanceInfo.DBInstanceClass, // 추가된 DB 인스턴스 클래스
+		instanceInfo.DBInstanceClass, // 추가된 DB 인스턴스 클래스
 	}
 ```
 (2) GetHeaders()
