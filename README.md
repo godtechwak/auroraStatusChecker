@@ -73,13 +73,13 @@ How to Add a Query Field
 #### DB 인스턴스의 인스턴스 클래스를 추가 조회하고 싶은 경우
 (1) Describe()
 ```
-return []string{
-		*instanceInfo.DBInstanceIdentifier,
-		*instanceInfo.EngineVersion,
-		*instanceInfo.DBInstanceStatus,
-		*instanceParam.ParameterApplyStatus,
-		*instanceInfo.DBInstanceClass, // 추가된 DB 인스턴스 클래스
-	}, nil
+values := []*string{
+		instanceInfo.DBInstanceIdentifier,
+		instanceInfo.EngineVersion,
+		instanceInfo.DBInstanceStatus,
+		instanceParam.ParameterApplyStatus,
+		instanceInfo.DBInstanceClass, // 추가된 DB 인스턴스 클래스
+	}
 ```
 (2) GetHeaders()
 ```
