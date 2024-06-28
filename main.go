@@ -7,8 +7,8 @@ import (
 	"strconv"
 	"text/tabwriter"
 
-	"aurora_version_check/logger_util"
-	"aurora_version_check/rds_util"
+	"aurora_status_check/logger_util"
+	"aurora_status_check/rds_util"
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
