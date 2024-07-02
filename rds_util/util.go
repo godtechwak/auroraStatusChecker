@@ -123,7 +123,7 @@ func printFooter(w *tabwriter.Writer, colCount int, logger *log.Logger) {
 }
 
 func printRow(w *tabwriter.Writer, columns []string, logger *log.Logger) {
-	row := strings.Join(columns, "│\t ") + "│\t\n"
+	row := strings.Join(columns, "│\t ") + "\t\n"
 	fmt.Fprintf(w, row)
 	logger.Println(strings.Join(columns, " | "))
 }
